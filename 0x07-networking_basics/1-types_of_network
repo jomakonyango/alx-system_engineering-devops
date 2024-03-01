@@ -2,9 +2,9 @@
 # This script answers multiple choice questions about networking
 
 # Write the answers to the file
-echo "3" > network_answers
-echo "2" >> network_answers
-echo "1" >> network_answers
+echo "3" > 1-types_of_network
+echo "2" >> 1-types_of_network
+echo "1" >> 1-types_of_network
 
 # Display the content of the file
-cat network_answers
+cat 1-types_of_networks
