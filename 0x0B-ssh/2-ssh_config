@@ -1,4 +1,4 @@
 # ~/.ssh/config
 Host *
-  IdentityFile ~/alx-system_engineering-devops/0x0B-ssh/school
+  IdentityFile ~/.ssh/school
   PasswordAuthentication no
