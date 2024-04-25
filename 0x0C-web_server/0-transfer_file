@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script transfers a file from our client to a server
+
+# Check if the correct number of arguments were passed
+if [ "$#" -ne 4 ]; then
+    echo "Usage: 0-transfer_file some_page.html 52.91.126.247 ubuntu /vagrant/private_key"
+    exit 1
+fi
+
+# Assign the arguments to variables for better readability
+PATH_TO_FILE="some_page.html"
+IP="52.91.126.247"
+USERNAME="ubuntu"
+PATH_TO_SSH_KEY="/vagrant/private_key"
+
+# Use scp to transfer the file
+scp -i "$PATH_TO_SSH_KEY" -o StrictHostKeyChecking=no "$PATH_TO_FILE" "$USERNAME@$IP:~/"
