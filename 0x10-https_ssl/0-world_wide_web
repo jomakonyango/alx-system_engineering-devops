@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# This script fetches and displays DNS record information for a domain and its subdomains
+
+# Function to fetch and display DNS record
+fetch_dns_record() {
+    local domain=$1
+    local subdomain=$2
+    local record=$(dig $subdomain.$domain +short)
+
+    if [[ -n "$record" ]]; then
+        echo "The subdomain $subdomain is a A record and points to $record"
+    fi
+}
+
+# Main script
+domain=$1
+subdomain=$2
+
+if [[ -z "$subdomain" ]]; then
+    # Display info for default subdomains when only domain is provided
+    for sub in www lb-01 web-01 web-02; do
+        fetch_dns_record $domain $sub
+    done
+else
+    # Display info for specified subdomain when both domain and subdomain are provided
+    fetch_dns_record $domain $subdomain
+fi
+
