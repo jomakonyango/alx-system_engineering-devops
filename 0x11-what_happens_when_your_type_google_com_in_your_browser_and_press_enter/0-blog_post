@@ -1,0 +1,22 @@
+
+ndered what happens when you type https://www.google.com in your browser and press enter. oh it loads the google webpage . Thats right but what happens for it to load this page. Lets have a tour on our journey to viewing the google webpage.
+1. Domain Name System Request.
+The browser sends a Domain Name System (DNS) request to translate the human-readable domain name "www.google.com" into an IP addres to the ISP'S DNS server. Once it locates the IP equivalent to www.google.com,it will initiate a connection to the Transmission control protocol over internet protocol.
+2. TCP/IP
+Tcp ensures reliable and ordered delivery of packet data.
+Ip handles the routing of these packets across the internet to the destination server.
+3.Firewall
+It is then directed to pass through a firewall which monitors and controlls the incoming and outgoing traffic.Ensuring safety in the network.
+4.HTTPS/SSL
+considering we are accessing https://www.google.com. This only means we are accessing  asecure network symbolised  by acronym https - Hypertext Transfer Protocol secure. The webserver and the browser will engage in a ssl/tls handshake to create a secure connection between the two ensuring privacy and blocjing eavesdropping.
+5. Load Balancer.
+Once the request reaches Google’s network, it encounters a load balancer. A load balancer distributes network traffic across multiple servers to ensure no single server becomes overwhelmed with too many requests.
+6.Webserver
+Once the connection is established and the request reaches google's servers,the load balancer forwards the request to one of Google’s web servers. The web server retrieves the requested webpage, which is often an HTML file.
+7.Application Server
+In the case of dynamic web pages or web applications, the request may be forwarded from the web server to an application server. The application server executes the necessary code, interacts with databases or other resources, and generates the content to be sent back to the client.
+8.Database
+Finally, the application server might need to retrieve or update data in a database. Once the necessary data has been gathered and the HTML file has been created, it’s sent back to your browser.
+
+In conclusion all the above are are systems that work toward achieving one goal accessing the webpage.
+
