@@ -19,8 +19,9 @@ if __name__ == "__main__":
     # Get the employee ID from the command-line arguments
     employee_id = sys.argv[1]
     # Define the URLs for the user and todos endpoints
-    user_url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
-    todos_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(employee_id)
+    base_url = "https://jsonplaceholder.typicode.com/users/"
+    user_url = "{}{}".format(base_url, employee_id)
+    todos_url = "{}/{}/todos".format(base_url, employee_id)
 
     # Send a GET request to the user endpoint and parse the response as JSON
     response = requests.get(user_url)
@@ -35,7 +36,8 @@ if __name__ == "__main__":
     total_tasks = len(todos)
 
     # Print the employee's progress
-    print("Employee {} is done with tasks({}/{}):".format(user['name'], len(done_tasks), total_tasks))
+    print("Employee {} is done with tasks({}/{}):".format(
+        user['name'], len(done_tasks), total_tasks))
     # Print the titles of the completed tasks
     for task in done_tasks:
         print("\t {}".format(task['title']))
