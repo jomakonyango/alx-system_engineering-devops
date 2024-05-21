@@ -1,10 +1,15 @@
 #!/usr/bin/python3
-# Import the requests module for making HTTP requests
-import requests
-# Import the sys module for command-line arguments
-import sys
+"""
+This module uses the JSONPlaceholder API to fetch data about an employee's
+TODO list progress and prints a summary in the console.
 
-# Ensure the script doesn't run when imported
+Usage:
+    ./0-gather_data_from_an_API.py <employee_id>
+"""
+
+import requests  # For making HTTP requests
+import sys  # For command-line arguments
+
 if __name__ == "__main__":
     # Check if an employee ID is provided
     if len(sys.argv) < 2:
