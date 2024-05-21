@@ -33,4 +33,4 @@ if __name__ == "__main__":
     print("Employee {} is done with tasks({}/{}):".format(user['name'], len(done_tasks), total_tasks))
     # Print the titles of the completed tasks
     for task in done_tasks:
-        print("\t {}".format(task['title']))i
+        print("\t {}".format(task['title']))
