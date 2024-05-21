@@ -26,7 +26,7 @@ if __name__ == "__main__":
         employee_id = user['id']
         todos_url = "{}/{}/todos".format(base_url, employee_id)
 
-        # Send a GET request to the todos endpoint and parse the response as JSON
+        # Send a GET request tothetodosendpoint andparse the response as JSON
         todos_response = requests.get(todos_url)
         todos = todos_response.json()
 
