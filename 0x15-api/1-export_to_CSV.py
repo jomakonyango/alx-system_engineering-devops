@@ -18,7 +18,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # Get the employee ID from the command-line arguments
-    employee_id = sys.argv[1]
+    employee_id = int(sys.argv[1])
     # Define the URLs for the user and todos endpoints
     base_url = "https://jsonplaceholder.typicode.com/users/"
     user_url = "{}{}".format(base_url, employee_id)
@@ -36,5 +36,5 @@ if __name__ == "__main__":
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         # Write each task to the CSV file
         for task in todos:
-            writer.writerow([employee_id, user['name'],
+            writer.writerow([employee_id, user['username'],
                              task['completed'], task['title']])
