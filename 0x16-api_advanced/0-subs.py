@@ -11,7 +11,7 @@ def number_of_subscribers(subreddit):
     for a given subreddit.
     """
     # Set custom User-Agent
-    headers = {'User-Agent': 'my-app/0.0.1'}
+    headers = {'User-Agent': 'linux:0x16_API_advanced:v1 (by /u/john_otieno)'}
 
     # Send a GET request to the Reddit API
     response = requests.get(
@@ -22,8 +22,8 @@ def number_of_subscribers(subreddit):
 
     # Check if the subreddit is valid
     if response.status_code != 200:
-        return "OK"
+        return 0
 
     # Get the number of subscribers
     data = response.json()
-    return "OK"
+    return data['data']['subscribers']
