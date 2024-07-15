@@ -1,10 +1,3 @@
-#!/usr/bin/env bash
-# This script answers multiple choice questions about networking
-
-# Write the answers to the file
-echo "2" > 1-types_of_network
-echo "2" >> 1-types_of_network
-echo "2" >> 1-types_of_network
-
-# Display the content of the file
-cat 1-types_of_networks
+3
+2
+1
