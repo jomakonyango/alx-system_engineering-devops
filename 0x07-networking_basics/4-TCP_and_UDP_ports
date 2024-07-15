@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# This script displays listening sockets along with their associated PID and program name.
+
+# Function to extract program name from PID
+get_program_name() {
+    local pid="$1"
+    local program_name
+    program_name=$(ps -p "$pid" -o comm=)
+    echo "$program_name"
+}
+
+# Display listening TCP ports
+netstat -tuln | awk '/^tcp/ && /LISTEN/ {
+    split($4, addr, ":");
+    printf("TCP %s:%s\tPID: %s\tProgram: %s\n", addr[1], addr[2], $7, get_program_name($7));
+}'
+
+# Display listening UDP ports
+netstat -uln | awk '/^udp/ && /UNCONN/ {
+    split($4, addr, ":");
+    printf("UDP %s:%s\tPID: %s\tProgram: %s\n", addr[1], addr[2], $6, get_program_name($6));
+}'
