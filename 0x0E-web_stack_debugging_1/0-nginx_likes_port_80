@@ -14,3 +14,21 @@ sudo systemctl restart nginx
 
 # Enable Nginx to start on boot
 sudo systemctl enable nginx
+
+# Check if Nginx is running and listening on port 80
+if sudo systemctl status nginx | grep -q "active (running)"; then
+    echo "Nginx is running."
+else
+    echo "Nginx is not running."
+    exit 1
+fi
+
+if sudo netstat -tuln | grep -q ":80 "; then
+    echo "Nginx is listening on port 80."
+else
+    echo "Nginx is not listening on port 80."
+    exit 1
+fi
+
+# Return expected output
+echo 2
