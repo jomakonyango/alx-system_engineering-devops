@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# This script installs Nginx, configures it to listen on port 80, and ensures it serves the default welcome page.
+
+# Exit immediately if a command exits with a non-zero status
+set -e
 
 # Update package list and install Nginx if not installed
 sudo apt-get update
@@ -23,6 +27,9 @@ server {
     }
 }
 EOF
+
+# Test Nginx configuration
+sudo nginx -t
 
 # Restart Nginx to apply changes
 sudo service nginx restart
