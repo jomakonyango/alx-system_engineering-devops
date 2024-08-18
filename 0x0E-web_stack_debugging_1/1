@@ -8,9 +8,19 @@ Reading package lists...
 Building dependency tree...
 Reading state information...
 nginx is already the newest version (1.18.0-6ubuntu14.4).
-0 upgraded, 0 newly installed, 0 to remove and 63 not upgraded.
-Job for nginx.service failed because the control process exited with error code.
-See "systemctl status nginx.service" and "journalctl -xeu nginx.service" for details.
-Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
-Executing: /lib/systemd/systemd-sysv-install enable nginx
-Nginx is not running.
+0 upgraded, 0 newly installed, 0 to remove and 55 not upgraded.
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0    12    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+HTTP/1.1 200 OK
+Server: nginx/1.18.0 (Ubuntu)
+Date: Sun, 18 Aug 2024 18:47:49 GMT
+Content-Type: text/html
+Content-Length: 12
+Last-Modified: Tue, 30 Apr 2024 01:22:47 GMT
+Connection: keep-alive
+ETag: "663047e7-c"
+Accept-Ranges: bytes
+

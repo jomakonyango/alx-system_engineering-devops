@@ -4,35 +4,28 @@
 sudo apt-get update
 sudo apt-get install -y nginx
 
-# Create a basic Nginx configuration file
-sudo tee /etc/nginx/sites-available/mysite.com > /dev/null <<EOF
+# Remove custom index.html if it exists
+sudo rm -f /var/www/html/index.html
+
+# Revert to default Nginx configuration
+sudo tee /etc/nginx/sites-available/default > /dev/null <<EOF
 server {
-    listen 80;
-    server_name mysite.com;
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
     root /var/www/html;
-    index index.html;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
 }
 EOF
-
-# Remove existing symbolic link if it exists
-sudo rm -f /etc/nginx/sites-enabled/mysite.com
-
-# Create a symbolic link to enable the site
-sudo ln -s /etc/nginx/sites-available/mysite.com /etc/nginx/sites-enabled/
-
-# Ensure worker_connections is correctly placed in nginx.conf
-sudo sed -i '/worker_connections/d' /etc/nginx/nginx.conf
-sudo sed -i '/events {/a \\tworker_connections 1024;' /etc/nginx/nginx.conf
-
-# Check for processes using port 80 and stop them
-sudo lsof -i :80 | awk 'NR>1 {print $2}' | xargs sudo kill -9
-
-# Test Nginx configuration
-sudo nginx -t
 
 # Restart Nginx to apply changes
 sudo service nginx restart
 
-# Verify Nginx is running and listening on port 80
+# Verify Nginx is running and serving the default welcome page
 curl -I http://localhost:80
-
