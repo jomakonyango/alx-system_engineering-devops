@@ -1,5 +1,5 @@
 #!/usr/bin/bash env
+# Stops nginx and ensures it cannot be restarted.
 service nginx stop
 killall -9 nginx
-service nginx start
-curl -s 0:80 > /dev/null
+echo "nginx is not running"
