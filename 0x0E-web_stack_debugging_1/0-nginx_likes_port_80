@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/env bash
 
 # Update package list and install Nginx if not installed
 sudo apt-get update
@@ -24,9 +24,8 @@ sudo ln -s /etc/nginx/sites-available/mysite.com /etc/nginx/sites-enabled/
 sudo sed -i '/worker_connections/d' /etc/nginx/nginx.conf
 sudo sed -i '/events {/a \\tworker_connections 1024;' /etc/nginx/nginx.conf
 
-# Create a simple index.html file if it doesn't exist
-sudo mkdir -p /var/www/html
-echo "<h1>Welcome to Nginx!</h1>" | sudo tee /var/www/html/index.html
+# Check for processes using port 80 and stop them
+sudo lsof -i :80 | awk 'NR>1 {print $2}' | xargs sudo kill -9
 
 # Test Nginx configuration
 sudo nginx -t
